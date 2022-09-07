@@ -503,22 +503,6 @@ async def make_ban_handler(call: types.CallbackQuery):
         else:
             await call.message.edit_text(f'Пользователь {id_dunno} забанен ', reply_markup=None)
 
-
-@dp.message_handler(content_types=['poll'])
-async def regist_univer(message: types.Message):
-    if message.chat.id == -1001785673732:
-        if message.from_user.id == 136817688:
-            for i in DB.all_list():
-                try:
-                    await message.forward(chat_id=i)
-                    await asyncio.sleep(0.1)
-                except:
-                    pass
-            await message.answer('Сообщения разосланы')
-        else:
-            await message.answer('Вы не бог, я тут бот')
-
-
 # ------------------- regist -------------------
 class regist_decider(StatesGroup):
     waiting_regist_univer = State()
